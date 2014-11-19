@@ -1,6 +1,9 @@
-C:\Users\Administrator\Desktop\spring-ws-master\spring-ws-master\src\main\java\weather\service\WeatherService.java
-C:\Users\Administrator\Desktop\spring-ws-master\spring-ws-master\src\main\java\weather\service\WeatherServiceImpl.java
-C:\Users\Administrator\Desktop\spring-ws-master\spring-ws-master\src\main\java\weather\client\SpringClient.java
-C:\Users\Administrator\Desktop\spring-ws-master\spring-ws-master\src\main\java\weather\model\TemperatureInfo.java
-C:\Users\Administrator\Desktop\spring-ws-master\spring-ws-master\src\main\java\weather\client\Client.java
-C:\Users\Administrator\Desktop\spring-ws-master\spring-ws-master\src\main\java\weather\client\WeatherServiceClient.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\weather\service\WeatherServiceImpl.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\weather\client\Client.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\schedule\client\SpringClient.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\weather\client\WeatherServiceClient.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\schedule\service\ScheduleService.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\weather\service\WeatherService.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\weather\client\SpringClient.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\schedule\service\DailyEmailTask.java
+C:\Users\Administrator\git\spring-websevice\src\main\java\weather\model\TemperatureInfo.java

@@ -14,6 +14,11 @@
 	</properties>
 
     <dependencies>
+    	<dependency>  
+            <groupId>org.apache.activemq</groupId>  
+            <artifactId>activemq-core</artifactId>  
+            <version>5.7.0</version>  
+        </dependency>  
 		<dependency>
 			<groupId>
 				org.codehaus.xfire
@@ -132,6 +137,11 @@
 			<artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
+		</dependency>
 
 
          
@@ -187,8 +197,8 @@
         </executions>
         <!--  qs-->
         <configuration>
-          <mainClass>weather.client.SpringClient</mainClass>
-          <mainClass>weather.client.Client</mainClass>
+          <!-- <mainClass>weather.client.SpringClient</mainClass>
+          <mainClass>weather.client.Client</mainClass> -->
         </configuration>
       </plugin>
 
