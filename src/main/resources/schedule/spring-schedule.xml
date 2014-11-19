@@ -12,27 +12,87 @@
 	</bean>
 	
 	<!-- 定时器任务 -->
-	<bean id="dailyEmailTask"
+	<!-- <bean id="dailyEmailTask"
 		class="schedule.service.DailyEmailTask">
 		<property name="scheduleService" ref="scheduleService"></property>
-	</bean>
+	</bean> -->
 	
 	<!-- 调度定时器任务 -->
-	<bean id="scheduleEmailTask"
+	<!-- <bean id="scheduleEmailTask"
 		class="org.springframework.scheduling.timer.ScheduledTimerTask">
 		<property name="timerTask" ref="dailyEmailTask"></property>
 		<property name="period" value="3000"></property>
-	</bean>
+	</bean> -->
 	
 	<!-- 启动定时器 -->
-	<bean id="timer" class="org.springframework.scheduling.timer.TimerFactoryBean">
+	<!-- <bean id="timer" class="org.springframework.scheduling.timer.TimerFactoryBean">
 		<property name="scheduledTimerTasks">
 			<list>
 				<ref bean="scheduleEmailTask"/>
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 	
+	
+	<!-- =====================使用quauz实现========================== -->
+	
+	 <!-- 日常任务job-->
+	<bean id="dailyRantEmailJob"
+		class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="schedule.service.DailyEmailJob"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="scheduleService" value-ref="scheduleService">
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<!-- 调度一个cron工作 -->
+	<!-- 调度触发器-->
+	<bean id="conEmailTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="dailyRantEmailJob"></property>
+		<property name="cronExpression" value="0 43 15 ? * *"></property>
+	</bean>
+	<!-- 启动工作 -->
+	 <bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+        <property name="triggers">  
+            <list>   
+                <ref bean="conEmailTrigger"/> 
+            </list>  
+        </property>  
+    </bean>
+    
+    <!-- 将SpringBean输入为JMX MBean -->
+    <!-- 通过MBeanExporter ，cronEmailTrigger Bean将作为Model Mbean以 eamilSchedule的名称
+    	被输入到用于管理的MBean服务器 -->
+    <bean class="org.springframework.jmx.export.MBeanExporter">
+    	<property name="beans">
+    		<map>
+    			<entry key="schedule:name=eamilSchedule" value-ref="conEmailTrigger"></entry>
+    		</map>
+    	</property>
+    	<property name="server" ref="jmxServer"></property>
+    	<!--配置被输入Mbean的管理接口中公开的方法  -->
+    	<property name="assembler" ref="assembler"></property>
+    </bean>
+    
+    <bean id="jmxServer"
+    	class="org.springframework.jmx.support.MBeanServerFactoryBean">
+    	<property name="defaultDomain" value="schedule"></property>
+    </bean>
+    
+    
+    <bean id="assembler"
+    	class="org.springframework.jmx.export.assembler.MethodNameBasedMBeanInfoAssembler">
+    	<property name="managedMethods">
+    		<list>
+    			<value>setCronExpression</value>
+    			<value>getCronExpression</value>
+    		</list>
+    	</property>
+    </bean>
+    
 </beans>
 
 

@@ -16,6 +16,59 @@
             value="weather.service.WeatherService" />
     </bean>
     
+    <!-- <bean id="weather"
+    	class="org.springframework.remoting.jaxrpc.JaxRpcPortProxyFactoryBean">
+    	<property name="wsdlDocumentUrl" 
+    		value="http://localhost:8080/weatherservice/WeatherService?wsdl"></property>
+    	<property name="serviceInterface"
+    		value="weather.service.WeatherService"></property>
+    	<property name="serviceName" value="WeatherService"></property>
+    	<property name="portName" value="WeatherServiceHttpPort"></property>
+    	<property name="namespaceUri" value="http://www.qiansheng.com/weather"></property>
+    	
+    	
+    	<property name="servicePostProcessors">
+    		<list>
+    			<ref bean="beanMappingPostProcessor"/>
+    			<ref bean="arrayMappingPostProcessor"/>
+    		</list>
+    	</property>
+    </bean> -->
+    
     
 
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
